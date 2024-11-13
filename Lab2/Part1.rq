@@ -1,0 +1,22 @@
+# Напишіть SPARQL запит, який буде повертати чисельність населення кожної з країн
+# Східної Європи. Результат запиту необхідно впорядкувати за спадінням чисельності
+# населення країн.
+PREFIX dbc: <http://dbpedia.org/resource/Category:>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?country ?country_name ?population
+WHERE {
+  ?country dct:subject dbc:Eastern_European_countries .
+  ?country dbo:populationTotal ?population .
+  OPTIONAL {
+    ?country rdfs:label ?country_name_en .
+    FILTER (lang(?country_name_en) = 'en')
+  }
+  OPTIONAL {
+    ?country rdfs:label ?country_name_any .
+  }
+  BIND (COALESCE(?country_name_en, ?country_name_any) AS ?country_name)
+}
+ORDER BY DESC(?population)

@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:schema="http://schema.org/"
+    xmlns:ex="http://example.com/"
+    xmlns:dc="http://purl.org/dc/terms/">
+
+  <!-- 1. Brass is an alloy of copper and zinc -->
+  <!-- Define Copper and Zinc -->
+  <rdf:Description rdf:about="http://example.com/materials/copper">
+    <rdfs:label>Copper</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.com/materials/zinc">
+    <rdfs:label>Zinc</rdfs:label>
+  </rdf:Description>
+  <!-- Define Brass as an alloy consisting of Copper and Zinc -->
+  <rdf:Description rdf:about="http://example.com/materials/brass">
+    <rdfs:label>Brass</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/Alloy"/>
+    <ex:consistsOf>
+      <rdf:Bag>
+        <rdf:li rdf:resource="http://example.com/materials/copper"/>
+        <rdf:li rdf:resource="http://example.com/materials/zinc"/>
+      </rdf:Bag>
+    </ex:consistsOf>
+  </rdf:Description>
+
+  <!-- 2. SPIEGEL is a German news magazine headquartered in Hamburg -->
+  <!-- Define Hamburg -->
+  <rdf:Description rdf:about="http://example.com/locations/hamburg">
+    <rdfs:label>Hamburg</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/City"/>
+  </rdf:Description>
+  <!-- Define SPIEGEL -->
+  <rdf:Description rdf:about="http://example.com/organizations/spiegel">
+    <rdfs:label>SPIEGEL</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/Periodical"/>
+    <dc:language>de</dc:language>
+    <schema:location rdf:resource="http://example.com/locations/hamburg"/>
+    <ex:country rdf:resource="http://example.com/countries/germany"/>
+  </rdf:Description>
+  <!-- Define Germany -->
+  <rdf:Description rdf:about="http://example.com/countries/germany">
+    <rdfs:label>Germany</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/Country"/>
+  </rdf:Description>
+
+  <!-- 3. An essay consists of an introduction, a main body, and a conclusion -->
+  <!-- Define the parts of the essay -->
+  <rdf:Description rdf:about="http://example.com/essay/introduction">
+    <rdfs:label>Introduction</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.com/essay/body">
+    <rdfs:label>Main Body</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.com/essay/conclusion">
+    <rdfs:label>Conclusion</rdfs:label>
+  </rdf:Description>
+  <!-- Define the Essay -->
+  <rdf:Description rdf:about="http://example.com/essay">
+    <rdfs:label>Essay</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/CreativeWork"/>
+    <ex:consistsOf>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://example.com/essay/introduction"/>
+        <rdf:li rdf:resource="http://example.com/essay/body"/>
+        <rdf:li rdf:resource="http://example.com/essay/conclusion"/>
+      </rdf:Seq>
+    </ex:consistsOf>
+  </rdf:Description>
+
+  <!-- 4. Pavlo knows that Olena lives in Poltava -->
+  <!-- Define Poltava -->
+  <rdf:Description rdf:about="http://example.com/locations/poltava">
+    <rdfs:label>Poltava</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/City"/>
+  </rdf:Description>
+  <!-- Define Olena -->
+  <foaf:Person rdf:about="http://example.com/people/olena">
+    <rdfs:label>Olena</rdfs:label>
+    <foaf:name>Olena</foaf:name>
+  </foaf:Person>
+  <!-- Reify the statement that Olena lives in Poltava -->
+  <rdf:Statement rdf:about="http://example.com/statements/olena-lives-in-poltava">
+    <rdf:subject rdf:resource="http://example.com/people/olena"/>
+    <rdf:predicate rdf:resource="http://schema.org/location"/>
+    <rdf:object rdf:resource="http://example.com/locations/poltava"/>
+  </rdf:Statement>
+  <!-- Pavlo knows this statement -->
+  <foaf:Person rdf:about="http://example.com/people/pavlo">
+    <rdfs:label>Pavlo</rdfs:label>
+    <foaf:name>Pavlo</foaf:name>
+    <foaf:knows rdf:resource="http://example.com/people/olena"/>
+    <ex:knowsStatement rdf:resource="http://example.com/statements/olena-lives-in-poltava"/>
+  </foaf:Person>
+
+  <!-- 5. Olena says that her friend lives in Kyiv -->
+  <!-- Define Kyiv -->
+  <rdf:Description rdf:about="http://example.com/locations/kyiv">
+    <rdfs:label>Kyiv</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/City"/>
+  </rdf:Description>
+  <!-- Define Olena's friend -->
+  <foaf:Person rdf:about="http://example.com/people/olena-friend">
+    <rdfs:label>Olena's Friend</rdfs:label>
+    <foaf:name>Olena's Friend</foaf:name>
+  </foaf:Person>
+  <!-- Reify the statement that Olena's friend lives in Kyiv -->
+  <rdf:Statement rdf:about="http://example.com/statements/olenas-friend-lives-in-kyiv">
+    <rdf:subject rdf:resource="http://example.com/people/olena-friend"/>
+    <rdf:predicate rdf:resource="http://schema.org/location"/>
+    <rdf:object rdf:resource="http://example.com/locations/kyiv"/>
+  </rdf:Statement>
+  <!-- Olena says this statement -->
+  <foaf:Person rdf:about="http://example.com/people/olena">
+    <!-- Already defined above -->
+    <foaf:knows rdf:resource="http://example.com/people/olena-friend"/>
+    <ex:says rdf:resource="http://example.com/statements/olenas-friend-lives-in-kyiv"/>
+  </foaf:Person>
+
+  <!-- 6. Stefan thinks that Anna knows that he knows her father -->
+  <!-- Define Anna -->
+  <foaf:Person rdf:about="http://example.com/people/anna">
+    <rdfs:label>Anna</rdfs:label>
+    <foaf:name>Anna</foaf:name>
+  </foaf:Person>
+  <!-- Define Stefan -->
+  <foaf:Person rdf:about="http://example.com/people/stefan">
+    <rdfs:label>Stefan</rdfs:label>
+    <foaf:name>Stefan</foaf:name>
+  </foaf:Person>
+  <!-- Define Anna's father -->
+  <foaf:Person rdf:about="http://example.com/people/annas-father">
+    <rdfs:label>Anna's Father</rdfs:label>
+    <foaf:name>Anna's Father</foaf:name>
+    <schema:parentOf rdf:resource="http://example.com/people/anna"/>
+  </foaf:Person>
+  <!-- Inner statement: Stefan knows Anna's father -->
+  <rdf:Statement rdf:about="http://example.com/statements/stefan-knows-annas-father">
+    <rdf:subject rdf:resource="http://example.com/people/stefan"/>
+    <rdf:predicate rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+    <rdf:object rdf:resource="http://example.com/people/annas-father"/>
+  </rdf:Statement>
+  <!-- Middle statement: Anna knows that Stefan knows her father -->
+  <rdf:Statement rdf:about="http://example.com/statements/anna-knows-stefan-knows-annas-father">
+    <rdf:subject rdf:resource="http://example.com/people/anna"/>
+    <rdf:predicate rdf:resource="http://example.com/properties/knowsStatement"/>
+    <rdf:object rdf:resource="http://example.com/statements/stefan-knows-annas-father"/>
+  </rdf:Statement>
+  <!-- Outer statement: Stefan thinks that Anna knows the above statement -->
+  <foaf:Person rdf:about="http://example.com/people/stefan">
+    <!-- Already defined -->
+    <ex:thinks rdf:resource="http://example.com/statements/anna-knows-stefan-knows-annas-father"/>
+  </foaf:Person>
+
+  <!-- 7. Ivan knows that Rome is the capital of Italy -->
+  <!-- Define Rome -->
+  <rdf:Description rdf:about="http://example.com/locations/rome">
+    <rdfs:label>Rome</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/City"/>
+  </rdf:Description>
+  <!-- Define Italy -->
+  <rdf:Description rdf:about="http://example.com/locations/italy">
+    <rdfs:label>Italy</rdfs:label>
+    <rdf:type rdf:resource="http://schema.org/Country"/>
+  </rdf:Description>
+  <!-- Reify the statement that Rome is the capital of Italy -->
+  <rdf:Statement rdf:about="http://example.com/statements/rome-is-capital-of-italy">
+    <rdf:subject rdf:resource="http://example.com/locations/rome"/>
+    <rdf:predicate rdf:resource="http://example.com/properties/isCapitalOf"/>
+    <rdf:object rdf:resource="http://example.com/locations/italy"/>
+  </rdf:Statement>
+  <!-- Ivan knows this statement -->
+  <foaf:Person rdf:about="http://example.com/people/ivan">
+    <rdfs:label>Ivan</rdfs:label>
+    <foaf:name>Ivan</foaf:name>
+    <ex:knowsStatement rdf:resource="http://example.com/statements/rome-is-capital-of-italy"/>
+  </foaf:Person>
+
+</rdf:RDF>
