@@ -7,10 +7,10 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": [
+        "@graph": [
             {
                 "@type": "Person",
+                "@id": "#ludwig-van-beethoven",
                 "name": "Людвіг ван Бетховен",
                 "birthDate": "1770-12-17",
                 "jobTitle": "Композитор",
@@ -21,7 +21,22 @@
                 "sameAs": "https://www.wikidata.org/wiki/Q255"
             },
             {
+                "@type": "CreativeWork",
+                "name": "Симфонія №5",
+                "datePublished": "1808",
+                "creator": { "@id": "#ludwig-van-beethoven" },
+                "sameAs": "https://www.wikidata.org/wiki/Q211345"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Місячна соната",
+                "datePublished": "1801",
+                "creator": { "@id": "#ludwig-van-beethoven" },
+                "sameAs": "https://www.wikidata.org/wiki/Q370456"
+            },
+            {
                 "@type": "Person",
+                "@id": "#wolfgang-amadeus-mozart",
                 "name": "Вольфганг Амадей Моцарт",
                 "birthDate": "1756-01-27",
                 "jobTitle": "Композитор",
@@ -30,6 +45,98 @@
                     "name": "Архієпископ Зальцбурзький"
                 },
                 "sameAs": "https://www.wikidata.org/wiki/Q254"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Реквієм",
+                "datePublished": "1791",
+                "creator": { "@id": "#wolfgang-amadeus-mozart" },
+                "sameAs": "https://www.wikidata.org/wiki/Q204177"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Маленька нічна серенада",
+                "datePublished": "1787",
+                "creator": { "@id": "#wolfgang-amadeus-mozart" },
+                "sameAs": "https://www.wikidata.org/wiki/Q252047"
+            },
+            {
+                "@type": "Person",
+                "@id": "#peter-ilyich-tchaikovsky",
+                "name": "Петр Ілліч Чайковський",
+                "birthDate": "1840-05-07",
+                "jobTitle": "Композитор",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Московська консерваторія"
+                },
+                "sameAs": "https://www.wikidata.org/wiki/Q131598"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Лебедине озеро",
+                "datePublished": "1876",
+                "creator": { "@id": "#peter-ilyich-tchaikovsky" },
+                "sameAs": "https://www.wikidata.org/wiki/Q204425"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Лускунчик",
+                "datePublished": "1892",
+                "creator": { "@id": "#peter-ilyich-tchaikovsky" },
+                "sameAs": "https://www.wikidata.org/wiki/Q145797"
+            },
+            {
+                "@type": "Person",
+                "@id": "#johann-sebastian-bach",
+                "name": "Йоганн Себастьян Бах",
+                "birthDate": "1685-03-31",
+                "jobTitle": "Композитор",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Церква Святого Фоми"
+                },
+                "sameAs": "https://www.wikidata.org/wiki/Q1339"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Бранденбурзькі концерти",
+                "datePublished": "1721",
+                "creator": { "@id": "#johann-sebastian-bach" },
+                "sameAs": "https://www.wikidata.org/wiki/Q240110"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Токата і фуга ре мінор",
+                "datePublished": "1704",
+                "creator": { "@id": "#johann-sebastian-bach" },
+                "sameAs": "https://www.wikidata.org/wiki/Q1330523"
+            },
+            {
+                "@type": "Person",
+                "@id": "#frederic-chopin",
+                "name": "Фредерік Шопен",
+                "birthDate": "1810-03-01",
+                "jobTitle": "Композитор",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Вільний художник"
+                },
+                "sameAs": "https://www.wikidata.org/wiki/Q7729"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Ноктюрни",
+                "datePublished": "1827",
+                "creator": { "@id": "#frederic-chopin" },
+                "sameAs": "https://www.wikidata.org/wiki/Q184485"
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Прелюдії",
+                "datePublished": "1839",
+                "creator": { "@id": "#frederic-chopin" },
+                "sameAs": "https://www.wikidata.org/wiki/Q312110"
             }
         ]
     }
